@@ -1,14 +1,14 @@
-name: Multi-Platform Matrix Build
+name: Matrix Build (build-c99b8d4)
 
 on:
+  # Allows you to run the workflow manually from the Actions tab
+  workflow_dispatch:
+  # Optional: Run automatically when a commit is pushed to 'build' branch
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ build ]
 
 jobs:
   build:
-    # Define matrix with 3 different Node.js versions
     strategy:
       matrix:
         version: [14, 16, 18]
@@ -19,6 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Identifier step (required by challenge)
       - name: matrix-c99b8d4
         run: echo "Building for Node version ${{ matrix.version }}"
 
